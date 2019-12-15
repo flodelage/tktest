@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Companies {% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="container p-4">
+        <h1>Companies</h1>
+    </div>
+    <div class="cards-company">
+        {% for company in companies %}
+                <div class="card m-2" style="width: 13rem; height: 21rem;">
+                    {% if company.sector == "Services" %}
+                        <img src="https://cdn.pixabay.com/photo/2014/10/22/17/50/bar-498420_1280.jpg" class="card-img-top" alt="">
+                    {% elif company.sector == "Retail" %}
+                        <img src="https://cdn.pixabay.com/photo/2015/10/12/15/18/clothing-store-984396_1280.jpg" class="card-img-top" alt="">
+                    {% elif company.sector == "Luxury" %}
+                        <img src="https://cdn.pixabay.com/photo/2014/04/05/11/40/diamond-316610_1280.jpg" class="card-img-top" alt="">
+                    {% elif company.sector == "Energy" %}
+                        <img src="https://cdn.pixabay.com/photo/2017/01/18/10/17/renewable-1989416_1280.jpg" class="card-img-top" alt="">
+                    {% elif company.sector == "Electronic" %}
+                        <img src="https://cdn.pixabay.com/photo/2015/02/24/14/37/technical-647488_1280.jpg" class="card-img-top" alt="">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ company.name }}</h5>
+                        <p class="card-text">Service: {{company.sector}}</p>
+                        <a href="{% url 'company:detail' company.pk %}" class="btn btn-secondary">see results</a>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+        {% if companies.has_previous %}
+            <a href="?page={{ companies.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ companies.number }} of {{ companies.paginator.num_pages }}.
+        </span>
+
+        {% if companies.has_next %}
+            <a href="?page={{ companies.next_page_number }}">next</a>
+        {% endif %}
+        </span>
+    </div>
+</div>
+
+{% endblock content %}

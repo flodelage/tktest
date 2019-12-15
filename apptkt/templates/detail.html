@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} {{ company.name|title }} {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="container p-4">
+       <h1>{{ company.name|title }} company</h1>
+    </div>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"> </th>
+                {% for result in results %}
+                    <th scope="col">{{ result.year }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">CA</th>
+                {% for result in results %}
+                    <td>{{ result.ca }}$</td>
+                <{% endfor %}
+            </tr>
+            <tr>
+                <th scope="row">Margin</th>
+                {% for result in results %}
+                    <td>{{ result.margin }}$</td>
+                <{% endfor %}
+            </tr>
+            <tr>
+                <th scope="row">Ebitda</th>
+                {% for result in results %}
+                    <td>{{ result.ebitda }}$</td>
+                <{% endfor %}
+            </tr>
+            <tr>
+                <th scope="row">Loss</th>
+                {% for result in results %}
+                    <td>{{ result.loss }}$</td>
+                <{% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    <a href="{% url 'company:index' %}" class="btn btn-secondary stretched-link">Back to companies</a>
+</div>
+
+{% endblock content %}
