@@ -1,6 +1,9 @@
 import json
-
-from models import Company, Result
+import os
+import django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tkttest.settings")
+django.setup()
+from apptkt.models import Company, Result
 
 
 with open('apptkt/fixtures/fixtures.json') as json_file:
