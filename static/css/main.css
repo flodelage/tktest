@@ -2,3 +2,45 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+
+
+/* responsive design */
+@media all and (min-width: 1024px) and (max-width: 1280px)
+{
+
+.cards-company {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+}
+
+@media all and (min-width: 780px) and (max-width: 1024px)
+{
+
+.cards-company {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+}
+
+@media all and (min-width: 375px) and (max-width: 780px)
+{
+
+.cards-company {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+}
+
+@media all and (max-width: 375px)
+{
+
+.cards-company {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+}
